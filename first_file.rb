@@ -72,12 +72,12 @@ def deaf_grandma
 		if response == response.upcase
 			year = rand(1930..1951)
 			puts "NO, NOT SINCE #{year}!"
-			response = gets.chomp
+			
 		else
 			puts "HUH?! SPEAK UP, SONNY!"
-			response = gets.chomp
 			
 		end
+		response = gets.chomp
 	end
 end
 
