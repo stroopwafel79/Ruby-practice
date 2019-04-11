@@ -65,21 +65,52 @@ end
 # Hint 2: Try to think about what parts of your program should happen over and over again. All of 
 # those should be in your while loop.
 
-def deaf_grandma
-	puts "Say something to grandma."
+# def deaf_grandma
+# 	puts "Say something to grandma."
+# 	response = gets.chomp
+# 	end_visit = false
+# 	while not end_visit
+# 		if response == response.upcase
+# 			year = rand(1930..1951)
+# 			puts "NO, NOT SINCE #{year}!"
+
+# 		elsif response == "BYE"
+# 			i = 1
+# 			While i < 3
+# 				response = gets.chomp
+# 				i += 1
+# 			end
+# 			end_visit = true
+			
+# 		else
+# 			puts "HUH?! SPEAK UP, SONNY!"
+# 		end
+# 		response = gets.chomp
+# 	end
+# end
+
+# deaf_grandma
+
+
+######### sorted array ########
+# Let's write a program which asks us to type in as many words as we want (one word per line, 
+# continuing until we just press Enter on an empty line), and which then repeats the words back 
+# to us in alphabetical order.
+
+# Ask user to type in many words
+# End by pressing enter on an empty line
+# Return sorted list of arrays
+
+def get_sorted
+	puts "Enter any number of words. Press enter after each word. Press enter on a blank line to exit"
+	words = []
 	response = gets.chomp
-	while response != "Bye"
-		if response == response.upcase
-			year = rand(1930..1951)
-			puts "NO, NOT SINCE #{year}!"
-			
-		else
-			puts "HUH?! SPEAK UP, SONNY!"
-			
-		end
+	while response != ""
+		words.push response
 		response = gets.chomp
 	end
+
+	return words.sort
 end
 
-deaf_grandma
-
+puts get_sorted
