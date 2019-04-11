@@ -158,31 +158,66 @@ end
 
 # Happy Birthday! Ask what year a person was born in, then the month, then the day. 
 # Figure out how old they are and give them a big SPANK! for each birthday they have had.
-def seconds_to_years seconds
-	years = (seconds / 31557600).floor
-end
 
-def num_spanks age
-	age.times do
-		puts "SPANK!"
+# def seconds_to_years seconds
+# 	years = (seconds / 31557600).floor
+# end
+
+# def num_spanks age
+# 	age.times do
+# 		puts "SPANK!"
+# 	end
+# end
+
+# def how_old
+# 	puts "What year were you born in?"
+# 	year = gets.chomp
+# 	puts "What month were you born in?"
+# 	month = gets.chomp
+# 	puts "What day were you born on?"
+# 	day = gets.chomp
+
+# 	birthday = Time.mktime(year, month, day)
+# 	today = Time.new
+
+# 	seconds_diff = today - birthday
+# 	years_old = seconds_to_years seconds_diff
+
+# 	num_spanks years_old
+# end
+
+# how_old
+
+
+######### Die class #########
+
+class Die
+	def initialize
+		@num = 6
+	end	
+
+	def roll
+		@num = 1 + rand(6)
+	end
+
+	def showing
+		@num
+	end
+
+	def cheat num
+		if not (num >=1 and num < 7)
+			return "Valid die is 1-6"
+		end
+		@num = num
 	end
 end
 
-def how_old
-	puts "What year were you born in?"
-	year = gets.chomp
-	puts "What month were you born in?"
-	month = gets.chomp
-	puts "What day were you born on?"
-	day = gets.chomp
+die = Die.new
+puts die.showing
+die.roll
+puts die.showing
+die.cheat 1
+puts die.showing
+die.cheat 7
 
-	birthday = Time.mktime(year, month, day)
-	today = Time.new
 
-	seconds_diff = today - birthday
-	years_old = seconds_to_years seconds_diff
-
-	num_spanks years_old
-end
-
-how_old
