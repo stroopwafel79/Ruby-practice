@@ -205,8 +205,9 @@ class Die
 	end
 
 	def cheat num
-		if not (num >=1 and num < 7)
-			return "Valid die is 1-6"
+		if !(num >=1 and num < 7)
+			puts "Valid die is 1-6"
+			return
 		end
 		@num = num
 	end
@@ -219,5 +220,6 @@ puts die.showing
 die.cheat 1
 puts die.showing
 die.cheat 7
+puts die.showing
 
 
