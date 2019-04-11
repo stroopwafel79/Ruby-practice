@@ -101,8 +101,46 @@ end
 # End by pressing enter on an empty line
 # Return sorted list of arrays
 
+def sort_list(array)
+
+	# Need base case!!
+	if array.length < 2 or 
+		return array
+	end
+
+	mid_index = array.length / 2
+	puts "mid_index: #{mid_index}"
+	left = array[0,mid_index]
+	puts "Left: #{left}"
+	right = array[mid_index, -1]
+	puts "Right #{right}"
+
+	sorted_left = sort_list(left)
+	puts "Sorted Left: #{sorted_left}"
+	sorted_right = sort_list(right)
+	puts "Sorted Right: #{sorted_right}"
+
+	sorted_list = []
+	current_index_left = 0
+	current_index_right = 0
+
+	while sorted_list.length < left.length + right.length
+		if current_index_left < left.length and current_index_right == right.length or sorted_left[current_index_left] < sorted_right[current_index_right]
+			sorted_list.push sorted_left[current_index_left]
+			current_index_left += 1
+		else
+			sorted_list.push sorted_right[current_index_right]
+			current_index_right += 1
+		end
+	end
+
+	return sorted_list
+end
+
+
 def get_sorted
-	puts "Enter any number of words. Press enter after each word. Press enter on a blank line to exit"
+	puts "Enter any number of words. Press enter after each word."
+	puts "Press enter on a blank line to exit."
 	words = []
 	response = gets.chomp
 	while response != ""
@@ -110,7 +148,7 @@ def get_sorted
 		response = gets.chomp
 	end
 
-	return words.sort
+	sort_list(words)
 end
 
 puts get_sorted
