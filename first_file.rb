@@ -101,54 +101,88 @@ end
 # End by pressing enter on an empty line
 # Return sorted list of arrays
 
-def sort_list(array)
+# def sort_list array
 
-	# Need base case!!
-	if array.length < 2 or 
-		return array
-	end
+# 	# Need base case!!
+# 	if array.length < 2 or 
+# 		return array
+# 	end
 
-	mid_index = array.length / 2
-	puts "mid_index: #{mid_index}"
-	left = array[0,mid_index]
-	puts "Left: #{left}"
-	right = array[mid_index, -1]
-	puts "Right #{right}"
+# 	mid_index = array.length / 2
+# 	puts "mid_index: #{mid_index}"
+# 	left = array[0,mid_index]
+# 	puts "Left: #{left}"
+# 	right = array[mid_index, -1]
+# 	puts "Right #{right}"
 
-	sorted_left = sort_list(left)
-	puts "Sorted Left: #{sorted_left}"
-	sorted_right = sort_list(right)
-	puts "Sorted Right: #{sorted_right}"
+# 	sorted_left = sort_list(left)
+# 	puts "Sorted Left: #{sorted_left}"
+# 	sorted_right = sort_list(right)
+# 	puts "Sorted Right: #{sorted_right}"
 
-	sorted_list = []
-	current_index_left = 0
-	current_index_right = 0
+# 	sorted_list = []
+# 	current_index_left = 0
+# 	current_index_right = 0
 
-	while sorted_list.length < left.length + right.length
-		if current_index_left < left.length and current_index_right == right.length or sorted_left[current_index_left] < sorted_right[current_index_right]
-			sorted_list.push sorted_left[current_index_left]
-			current_index_left += 1
-		else
-			sorted_list.push sorted_right[current_index_right]
-			current_index_right += 1
-		end
-	end
+# 	while sorted_list.length < left.length + right.length
+# 		if current_index_left < left.length and current_index_right == right.length or sorted_left[current_index_left] < sorted_right[current_index_right]
+# 			sorted_list.push sorted_left[current_index_left]
+# 			current_index_left += 1
+# 		else
+# 			sorted_list.push sorted_right[current_index_right]
+# 			current_index_right += 1
+# 		end
+# 	end
 
-	return sorted_list
+# 	return sorted_list
+# end
+
+
+# def get_sorted
+# 	puts "Enter any number of words. Press enter after each word."
+# 	puts "Press enter on a blank line to exit."
+# 	words = []
+# 	response = gets.chomp
+# 	while response != ""
+# 		words.push response
+# 		response = gets.chomp
+# 	end
+
+# 	sort_list words
+# end
+
+# puts get_sorted
+
+
+####### How old #########
+
+# Happy Birthday! Ask what year a person was born in, then the month, then the day. 
+# Figure out how old they are and give them a big SPANK! for each birthday they have had.
+def seconds_to_years seconds
+	years = (seconds / 31557600).floor
 end
 
-
-def get_sorted
-	puts "Enter any number of words. Press enter after each word."
-	puts "Press enter on a blank line to exit."
-	words = []
-	response = gets.chomp
-	while response != ""
-		words.push response
-		response = gets.chomp
+def num_spanks age
+	age.times do
+		puts "SPANK!"
 	end
-
-	sort_list(words)
 end
 
-puts get_sorted
+def how_old
+	puts "What year were you born in?"
+	year = gets.chomp
+	puts "What month were you born in?"
+	month = gets.chomp
+	puts "What day were you born on?"
+	day = gets.chomp
+
+	birthday = Time.mktime(year, month, day)
+	today = Time.new
+
+	seconds_diff = today - birthday
+	years_old = seconds_to_years seconds_diff
+
+	num_spanks years_old
+end
+
+how_old
